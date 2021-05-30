@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+// Variables - colors
+$navy-blue: #051c2d;
+$red: #c8102e;
+$silver: #f0f0f0;
+$blue: #1d428a;
+$white: #ffffff;
+$black: #000000;
+
+html, body {
+    margin: 0;
+    min-height: 100vh;
+    font-family:'Roboto', sans-serif;
+    background-color: $silver;
+    position: relative;
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: $white;
+    &:hover {
+        color: $silver;
+    }
+}
+
+.navbar p {
+    letter-spacing: 1.55px;
+    font-weight: 700;
+}
+
+#link-home {
+    margin-right: 1rem;
+}
+
+.space-around {
+    margin: 0 1rem;
+    text-transform: uppercase;
+}
+
+.container {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.navbar {
+    background-color: $navy-blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    color: $white;
+}
+
+.logo-img {
+    width: 60px;
+    height: auto;
+}
+
+.nav-left, 
+.nav-right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-right {
+    position: relative;
+}
+
+.drop-down {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background-color: $white;
+    border-radius: 6px;
+    z-index: 1;
+    width: 120px;
+    box-shadow: rgba(0, 0, 0, 0.1)  0 0px 20px, rgba(0, 0, 0, 0.1) 0 1px 10px;
+}
+
+.logout {
+    background-color: $white;
+    padding: 10px 15px;
+    cursor: pointer; 
+    color: $blue;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+    transition: all 0.25s ease;
+    &:hover {
+        background-color: $silver;
+    }
+}
+
+#user {
+    color: $white;
+    background-color: $blue;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+section {
+    display: none;
+    min-height: 80vh;
+}
+
+#link-team, 
+#link-players {
+    display: none;
+}
+
+main {
+    padding: 1.5rem 0;
+    position: relative;
+    width: 100%;
+    background-image: url('../../images/team.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+}
+
+.img-spinner {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 35%;
+    z-index: 2;
+}
+
+.h1-title {
+    color: $white;
+    letter-spacing: 7px;
+    text-align: center;
+    font-size: 3.5rem;
+    padding: 2rem;
+    margin: 0 0 2rem 0;
+    border-radius: 6px;
+    font-weight: 700;
+    background-color: rgba(0,0,0,0.65);
+    box-shadow: rgba(0, 0, 0, 0.25) 0 14px 28px, rgba(0, 0, 0, 0.22) 0 10px 10px;
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translate(-50%);
+        height: 6px;
+        border-radius: 2px;
+        width: 100px;
+        background-color: $red;
+    }
+}
+
+.h3-title {
+    text-transform: uppercase;
+    color: $white;
+    letter-spacing: 5px;
+    text-align: center;
+    font-size: 2rem;
+    padding: 3rem;
+    margin: 0 0 2rem 0;
+    font-weight: 300;
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 1.7rem;
+        left: 50%;
+        transform: translate(-50%);
+        height: 3px;
+        width: 100px;
+        background-color:$red;
+    }
+}
+
+.centered {
+    padding-top: 10%;
+    padding-bottom: 10%;
+    text-align: center;
+    position: relative;
+    height: fit-content;
+}
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 5; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+  }
+
+  .modal-content {
+    background-color: transparent;
+    margin: 10% auto; 
+    padding: 20px;
+    border: 1px solid $blue;
+    border-radius: 6px;
+    width: 50%; 
+    box-shadow: rgba(27, 10, 180, 0.616) 0px 0px 28px;
+    animation: from_top .5s forwards;
+    transform: scale(0);
+  }
+
+  @keyframes from_top {
+    0% {
+        transform: scale(0);
+    } 100% {
+        transform: scale(1);
+    }
+  }
+
+  .close {
+    color: $white;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    font-size: 40px;
+    font-weight: bold;
+    &:hover {
+        color: $red;
+        text-decoration: none;
+        cursor: pointer;
+    }
+  }
+
+.form {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2rem 3rem;
+    border-radius: 6px;
+    background-color: $white;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.input-field {
+    font-size: 20px;
+    border-radius: 6px;
+    border: 1px solid $blue;
+    color: $blue;
+    padding: 0.75em 1.5em;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: all .25s ease; 
+    width: 100%;
+    &::placeholder {
+        color: #5f7bb4;
+    }
+}
+
+label {
+    color: $blue;
+    font-style: italic;
+}
+
+.sign-in {
+    position: relative;
+}
+
+small {
+    display: none; 
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-style: italic;
+    color: $red;
+}
+
+.btn {
+    font-size: 20px;
+    border-radius: 6px;
+    font-weight: 700;
+    color: $white;
+    background: $red;
+    border: 1px solid $red;
+    padding: .75em 1.5em;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: all .25s ease;
+    &:hover {
+        background-color: $white;
+        color: $red;
+    }
+}
+
+.btn-submit, 
+.input-field {
+    margin: 1.5rem 0;
+}
+
+.article {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    background-color: $blue;
+    position: relative;
+}
+
+.nba-logo {
+    position: absolute;
+    top: 1.5rem;
+    left: 5%;
+    height: 170px;
+}
+
+
+.article-text {
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    color: $white;
+    column-count: 3;
+    column-gap: 100px;
+    column-rule-style: solid;
+    column-rule-width: 1px;
+    column-rule-color: $navy-blue;
+}
+
+.footer {
+    bottom: 0;
+    text-align: center;
+    background-color: $blue;
+    color: $white;
+    padding: 2.2rem 0;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin: 0;
+}
+
+
+

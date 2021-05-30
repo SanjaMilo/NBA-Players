@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Search NPA Players and choose your own dream team" />
+    <link rel="stylesheet" href="styles/home-style/style.css">
+    <link rel="stylesheet" href="styles/loader-style/loader.css">
+    <link rel="stylesheet" href="styles/players-style/players.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>NBA Players</title>
+</head>
+
+<body>
+
+    <nav class='navbar container'>
+        <div class="nav-left">
+            <a id="link-home" class="link" href="#">
+                <img class="logo-img" src="images/logo.png" alt="logo">
+            </a>
+            <a id="link-players" class="link space-around" href="#playerslist">
+                <p>PLAYERS</p>
+            </a>
+            <a id="link-team" class="link space-around" href="#myteam">
+                <p>MY TEAM</p>
+            </a>
+        </div>
+        <div class="nav-right">
+            <!-- Logged in User Name -->
+            <p id="user" class="space-around"><i class="fas fa-user"></i> Profile</p>
+            <div class="drop-down">
+                <p id="logout" class="logout">Sign Out</p>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <main class="container main">
+            <img class="img-spinner" src="images/player.png" alt="basketball">
+            <div class="container centered">
+                <h1 id="type_text" class="h1-title"></h1>
+                <button id="modal-opener" class="btn">Are you in?</button>
+                <div id="modal" class="modal">
+                    <span class="close">&times;</span>
+                    <div class="modal-content">
+                        <form class="form" id="login">
+                            <div class="sign-in">
+                                <label>Enter Your Name or Alias</label><br>
+                                <input id="name" class="input-field" type="text" placeholder="Enter your name">
+                                <small class="small">Please enter valid name (min three characters and first upper
+                                    letter)</small>
+                            </div>
+                            <div class="submitBtn">
+                                <button type="submit" class="btn btn-submit">SIGN IN</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="container article">
+            <img class="nba-logo" src="images/nba-logo.png" alt="NBA Logo">
+            <h3 class="h3-title">I Love This Game</h3>
+            <p class="article-text">
+                The National Basketball Association (NBA) is a professional basketball league in North America. The
+                league is composed of 30 teams (29 in the United States and 1 in Canada) and is one of the four major
+                professional sports leagues in the United States and Canada. It is the premier men's professional
+                basketball league in the world.
+
+                The league was founded in New York City on June 6, 1946, as the Basketball Association of America (BAA).
+                It changed its name to the National Basketball Association on August 3, 1949, after merging with the
+                competing National Basketball League (NBL). The NBA's regular season runs from October to April, with
+                each team playing 82 games. The league's playoff tournament extends into June. As of 2020, NBA players
+                are the world's best paid athletes by average annual salary per player.
+
+                The NBA is an active member of USA Basketball (USAB), which is recognized by the FIBA (International
+                Basketball Federation) as the national governing body for basketball in the United States. The league's
+                several international as well as individual team offices are directed out of its head offices in Midtown
+                Manhattan, while its NBA Entertainment and NBA TV studios are directed out of offices located in
+                Secaucus, New Jersey.
+
+                In North America, the NBA is the third wealthiest professional sport league after the National Football
+                League (NFL) and Major League Baseball (MLB) by revenue and being among the top four in the world.
+            </p>
+        </div>
+    </section>
+
+    <section id="players">
+        <div id="loader">
+            <img src="images/loader.gif" alt="loader">
+        </div>
+        <h3 class="h3-title blue">NBA Players - Choose Your Dream Team</h3>
+
+        <p class="message">No players by that category</p>
+        <div class="container wrapper">
+            <div class="main-block">
+                <div class="list">
+                    <div class="players-list-header">
+                        <h4 class="players-title">All Players</h4>
+                        <div class="players-search-wrapper">
+                            <input id="search" class="search-players" type="text" placeholder="Search Players">
+                        </div>
+                    </div>
+                    <div class="filters">
+                        <div class="players-list-filters">
+                            <div class="content-filter">
+                                <select name="select1" id="positions">
+                                    <option value="">All Positions</option>
+                                    <option value="C">C</option>
+                                    <option value="G">G</option>
+                                    <option value="F">F</option>
+                                    <option value="C-F">C-F</option>
+                                    <option value="F-C">F-C</option>
+                                    <option value="G-F">G-F</option>
+                                    <option value="empty">No position</option>
+                                </select>
+                            </div>
+                            <div class="content-filter">
+                                <select name="select2" id="teams">
+                                    <option value="">All Teams</option>
+                                    <!-- Create more options dynamically -->
+                                </select>
+                            </div>
+                            <div class="content-filter">
+                                <select name="select3" id="order">
+                                    <option value="">Order By</option>
+                                    <option value="ascending">Ascending</option>
+                                    <option value="descending">Descending</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <table class="players-list-table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>ID</th>
+                                    <th>PLAYER'S NAME</th>
+                                    <th>POSITION</th>
+                                    <th>TEAM</th>
+                                    <th>CITY</th>
+                                    <th>ADD TO MY TEAM</th>
+                                </tr>
+                            </thead>
+                            <tbody class="players-list-body">
+                                <!-- PLAYERS LIST TABLE  -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h3 class="h3-title blue">My Dream Team</h3>
+        <div class="container">
+            <div class="main-block">
+                <div class="list">
+                    <div class="players-list-header">
+                        <h4 class="players-title">My Team</h4>
+                    </div>
+                    <div class="table-container">
+                        <table class="players-list-table">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>ID</th>
+                                    <th>PLAYER'S NAME</th>
+                                    <th>POSITION</th>
+                                    <th>TEAM</th>
+                                    <th>CITY</th>
+                                    <th>REMOVE FROM TEAM</th>
+                                </tr>
+                            </thead>
+                            <tbody id='my-team' class="players-list-body">
+                                <!-- PLAYERS LIST TABLE  -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p class="footer">Developed by Sanja M. &copy; NBA Players 2021</p>
+    </footer>
+
+    <script src="js/home.js"></script>
+    <script src="js/fetchData.js"></script>
+    <script src="js/routes.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+// Variables - colors
+$navy-blue: #051c2d;
+$red: #c8102e;
+$silver: #f0f0f0;
+$blue: #1d428a;
+$white: #ffffff;
+$black: #000000;
+$grey: #dbdbdb;
+
+.blue {
+    color: $blue;
+}
+
+.wrapper {
+    margin-bottom: 1.5rem; 
+}
+
+.main-block {
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+    background-color: $white;
+    box-shadow: rgba(0, 0, 0, 0.1)  0 0px 20px, rgba(0, 0, 0, 0.1) 0 1px 10px;
+}
+
+.list {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.message {
+    display: none;
+    text-align: center;
+    color: $red;
+    font-weight: 700;
+}
+
+.players-list-header{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.players-title {
+    font-size: 1.25rem;
+    flex: 1 1;
+    color: $blue;
+    letter-spacing: 0.5px;
+}
+
+.players-search-wrapper {
+    margin: 0.5rem 0;
+    width: 20rem;
+}
+
+.search-players {
+    color: $blue;
+    border: 1px solid $grey;
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.25;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    &:focus {
+        outline-color: $blue;
+    }
+    &::placeholder {
+        color: #a1abc0;
+    }
+}
+
+.filters {
+    border-top: 1px solid $grey;
+}
+
+.players-list-filters {
+    display: flex;
+    padding-top: 0.5rem;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-filter {
+    margin: 0.25rem 0 1rem 0.25rem;
+    width: calc(33.333% - 1rem);
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+}
+
+select {
+    width: 100%;
+    border: 1px solid $grey;
+    border-radius: 6px;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    line-height: 1.25;
+    border: 1px solid $grey;
+    border-radius: 6px;
+    color: $blue;
+    &:focus {
+        outline-color: $blue;
+    }
+}
+
+.table-container {
+    margin-top: 0.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.players-list-table {
+    line-height: 1.25;
+    background-color: transparent;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: $grey;
+    font-size: 13px;
+    margin: 0;
+    position: relative;
+    width: 100%;
+}
+
+thead {
+    background-color: $grey;
+}
+
+th, td {
+    font-size: .9rem;
+    line-height: 1.25;
+    padding: 8px 6px;
+    color: $blue;
+}
+
+thead tr {
+    border-bottom: 1px solid $grey; 
+}
+
+tbody tr {
+    border-bottom: 1px solid $grey;
+    &:hover {
+        background-color: #fab566;
+        border-bottom: 1px solid $blue;
+        color: $navy-blue;
+    }
+}
+
+.btn-cell {
+    background-color: $white;
+    padding: 5px 10px;
+    border: 1px solid $blue;
+    border-radius: 6px;
+    color: $blue;
+    cursor: pointer;
+    &:hover {
+        color: $white;
+        background-color: $blue;
+    }
+}
+
+.colored-row {
+    background-color: #fdd5a7;
+}
+
+#my-team button.btn-cell {
+    border: 1px solid $red; 
+    color: $red;
+    &:hover {
+        color: $white;
+        background-color: $red;
+    }
+}
