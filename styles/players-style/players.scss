@@ -134,6 +134,9 @@ th, td {
     line-height: 1.25;
     padding: 8px 6px;
     color: $blue;
+    .fa-times {
+        color: $grey;
+    }
 }
 
 thead tr {
@@ -143,7 +146,7 @@ thead tr {
 tbody tr {
     border-bottom: 1px solid $grey;
     &:hover {
-        background-color: #fab566;
+        background-color: #cddbff;
         border-bottom: 1px solid $blue;
         color: $navy-blue;
     }
@@ -163,7 +166,7 @@ tbody tr {
 }
 
 .colored-row {
-    background-color: #fdd5a7;
+    background-color: #e8f0ff;
 }
 
 #my-team button.btn-cell {

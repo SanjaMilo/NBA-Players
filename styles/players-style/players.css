@@ -157,6 +157,10 @@ th, td {
   color: #1d428a;
 }
 
+th .fa-times, td .fa-times {
+  color: #dbdbdb;
+}
+
 thead tr {
   border-bottom: 1px solid #dbdbdb;
 }
@@ -166,7 +170,7 @@ tbody tr {
 }
 
 tbody tr:hover {
-  background-color: #fab566;
+  background-color: #cddbff;
   border-bottom: 1px solid #1d428a;
   color: #051c2d;
 }
@@ -186,7 +190,7 @@ tbody tr:hover {
 }
 
 .colored-row {
-  background-color: #fdd5a7;
+  background-color: #e8f0ff;
 }
 
 #my-team button.btn-cell {

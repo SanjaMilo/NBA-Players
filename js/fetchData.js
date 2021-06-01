@@ -35,6 +35,7 @@ const fetchData = () => {
 
 function drawTableRows(player, index) {
 	let tRow = document.createElement('tr');
+	tRow.setAttribute('data-id', player.id);
 	tableBody.appendChild(tRow);
 	let tData1 = document.createElement('td');
 	tData1.innerText = index + 1;
@@ -62,6 +63,9 @@ function drawTableRows(player, index) {
 	btnAddPlayer.setAttribute('data-id', player.id)
 	btnAddPlayer.addEventListener('click', addPlayerToMyTeam);
 	tData7.appendChild(btnAddPlayer);
+	let tData8 = document.createElement('td');
+	tData8.innerHTML = `<i class="fas fa-times"></i>`;
+	tRow.appendChild(tData8);
 
 	return tRow;
 };
@@ -115,7 +119,6 @@ function selectPlayersByPosition(e) {
 selectPosition.addEventListener('change', selectPlayersByPosition);
 
 
-
 let selectTeams = document.getElementById('teams');
 let keyTeam;
 
@@ -157,7 +160,11 @@ function orderPlayersByAscendDescend(e) {
 		filteredListOfPlayers = playersList.sort((a, b) => (a.first_name < b.first_name ? 1 : -1));
 		filteredListOfPlayers.forEach((player, index) => {
 			drawTableRows(player, index);
-		})
+		});
+	} else if (e.target.value === "") {
+		playersList.forEach((player, index) => {
+			drawTableRows(player, index);
+		});
 	};
 };
 
@@ -202,6 +209,7 @@ function drawTableRowsMyTeam(player, index) {
 
 
 let myTeam = [];
+let tableRowsArray = [];
 
 function addPlayerToMyTeam(e) {
 	//console.log(e.currentTarget.getAttribute('data-id'));
@@ -212,8 +220,13 @@ function addPlayerToMyTeam(e) {
 		myTeam.push(myPlayerId);
 	};
 
+	myTeam.forEach(elem => {
+		tableRowsArray.push(this.parentElement.parentElement);
+	});
+
 	myTeamTableBody.innerHTML = '';
 
+	// Draw My Team Table
 	myTeam.forEach((elem, indx) => {
 		filteredListOfPlayers = playersList.filter((player, index) => {
 			if (elem == player.id  && indx < 12) {
@@ -223,12 +236,41 @@ function addPlayerToMyTeam(e) {
 	});
 
 	e.target.parentElement.parentElement.classList.add("colored-row");
+	this.parentElement.parentElement.lastChild.innerHTML = `<i class="fas fa-check"></i>`;
+
+	if (myTeam.length < 13) {
+		tableRowsArray.push(this.parentElement.parentElement);
+	} else {
+		myTeam.splice(myTeam.length - 1, 1) // remove the last element)
+		window.confirm('You Have Chosen 12 Players For Your Dream Team');
+		this.parentElement.parentElement.classList.remove("colored-row");
+		this.parentElement.parentElement.lastChild.innerHTML = `<i class="fas fa-times"></i>`;
+	};
 };
 
 
 function removePlayerFromMyTeam(e) {
 	e.target.parentElement.parentElement.remove();
+
 	myTeam = myTeam.filter((elem) => elem !== e.currentTarget.getAttribute('data-id'));
+
+	tableRowsArray.filter(row => {
+		row !== e.target.parentElement.parentElement;
+	});
+	
+	tableRowsArray.forEach(row => {
+		row.classList = "";
+		row.lastChild.innerHTML = `<i class="fas fa-times"></i>`;
+	});
+	myTeam.forEach(elem => {
+		tableRowsArray.find(row => {
+			if(elem == row.getAttribute('data-id')) {
+				row.classList = "colored-row";
+				row.lastChild.innerHTML = `<i class="fas fa-check"></i>`
+			};
+		});
+	});
+
 };
 
 

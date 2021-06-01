@@ -22,6 +22,7 @@ loopFrame();
 let modal = document.getElementById('modal');
 let btnOpenModal = document.getElementById('modal-opener');
 let btnCloseModal = document.querySelector('.close');
+let userLocalStorage;
 
 const handleModalOpen = (e) => {
     e.stopPropagation();
@@ -67,7 +68,11 @@ function onSignIn(e) {
 		location.hash = '#playerslist';
 	};
 	inputField.value = '';
-    handleModalClose();
+
+    if (localStorage.getItem('userName')) {
+        handleModalClose();
+    };
+    
 };
 
 function logoutUser() {
