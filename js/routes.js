@@ -1,4 +1,4 @@
-// First Check: If user is not logged im, than cannot access other pages, and user is redirected on HomePage to login in
+// First Check: If user is not logged im, than cannot access other pages, and user is redirected on HomePage to login 
 
 let homeScreen = document.getElementById('home');
 let playersScreen = document.getElementById('players');
@@ -12,7 +12,7 @@ function handleRoute(e) {
 	if (!localStorage.getItem('userName') && _hash != "") {
 		location.hash = "";
 	};
-	// possible Routs options and non-valid route redirects on Home Page
+	// possible Routs options and non-valid route redirects on Home Page (default)
 	switch (_hash) {
 		case '':
 			homeScreen.style.display = 'block';

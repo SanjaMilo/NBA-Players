@@ -10,7 +10,6 @@ function hideLoader() {
 };
 
 let tableBody = document.querySelector('.players-list-body');
-let message = document.querySelector('.message');
 let playersList = [];
 let myTeamList = [];
 let filteredListOfPlayers = [];
@@ -29,7 +28,7 @@ const fetchData = () => {
 			console.log(playersList); 
 
 			renderPlayersList();
-			createOptionTags();
+			removeDuplicateTeams();
 		});
 };
 
@@ -120,15 +119,30 @@ selectPosition.addEventListener('change', selectPlayersByPosition);
 
 
 let selectTeams = document.getElementById('teams');
+let teams = [];
+let filteredTeams = [];
 let keyTeam;
 
-function createOptionTags () {
+function removeDuplicateTeams() {
 	playersList.forEach((player) => {
-		let option = document.createElement('option');
-		option.innerText = player.team.name;
-		option.setAttribute('value', player.team.name);
-		selectTeams.appendChild(option);
+		teams.push(player.team.name);
+		filteredTeams = teams.filter((team, index) => teams.indexOf(team) === index)
 	});
+	// console.log(teams); // 25 items
+	// console.log(filteredTeams); // 16 items
+
+	createOptionTags();
+};
+
+function createOptionTags () {
+	if (filteredTeams.length > 0) {
+		filteredTeams.forEach((team) => {
+			let option = document.createElement('option');
+			option.innerText = team;
+			option.setAttribute('value', team);
+			selectTeams.appendChild(option);
+		});
+	};	
 };
 
 function selectPlayersByTeam (e) {
@@ -208,7 +222,7 @@ function drawTableRowsMyTeam(player, index) {
 };
 
 
-let myTeam = [];
+let myTeam = []; // array of players IDs
 let tableRowsArray = [];
 
 function addPlayerToMyTeam(e) {
@@ -258,8 +272,9 @@ function removePlayerFromMyTeam(e) {
 		row !== e.target.parentElement.parentElement;
 	});
 	
+	// In the Players List table, implement the changes: 
 	tableRowsArray.forEach(row => {
-		row.classList = "";
+		row.classList = ""; // remove colored-row class
 		row.lastChild.innerHTML = `<i class="fas fa-times"></i>`;
 	});
 	myTeam.forEach(elem => {
@@ -270,7 +285,6 @@ function removePlayerFromMyTeam(e) {
 			};
 		});
 	});
-
 };
 
 

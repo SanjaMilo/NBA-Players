@@ -12,7 +12,7 @@ function loopFrame() {
         clearTimeout(loopTimer);
         return false;
     }
-     loopTimer = setTimeout('loopFrame()', 80); 
+     loopTimer = setTimeout(loopFrame, 80); 
 };
 
 loopFrame();
@@ -22,11 +22,14 @@ loopFrame();
 let modal = document.getElementById('modal');
 let btnOpenModal = document.getElementById('modal-opener');
 let btnCloseModal = document.querySelector('.close');
-let userLocalStorage;
 
 const handleModalOpen = (e) => {
     e.stopPropagation();
     modal.style.display = "block";
+
+    if (localStorage.getItem('userName')) {
+        window.confirm("You Are Already Logged In")
+    }
 };
 
 const handleModalClose = () => {
@@ -36,6 +39,7 @@ const handleModalClose = () => {
 btnOpenModal.addEventListener('click', handleModalOpen);
 btnCloseModal.addEventListener('click', handleModalClose);
 document.body.addEventListener('click', (e) => {
+    // to close the Modal on outside click 
     if (e.target == modal) {
         modal.style.display = "none";
       }
@@ -98,7 +102,7 @@ form.addEventListener('submit', onSignIn);
 btnLogout.addEventListener('click', logoutUser);
 userLogged.addEventListener('click', showDropDown);
 
-
+// On page refresh this should still work
 const pageLoad = () => {
     if (localStorage.getItem('userName')) {
         userLogged.innerText = localStorage.getItem('userName');
