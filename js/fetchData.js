@@ -13,12 +13,17 @@ let tableBody = document.querySelector('.players-list-body');
 let playersList = [];
 let myTeamList = [];
 let filteredListOfPlayers = [];
+const apiKey = '3f2ff3e3-75f3-4cd2-b755-c9a33da04399';
 
 // Fetching data from API url:   https://www.balldontlie.io/api/v1/players
 const fetchData = () => {
 	showLoader(); 
 
-	fetch('https://www.balldontlie.io/api/v1/players')
+	fetch('https://api.balldontlie.io/v1/players', {
+		headers:{
+			Authorization: apiKey
+		}
+	})
 		.then((res) => res.json())
 		.then((data) => {
 			hideLoader(); 
